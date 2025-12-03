@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CurArte · Sabores que encantan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="description" content="CurArte: Más que un lugar, una pausa. Disfruta de tablas de quesos, vinos, pizzas napolitanas y café de especialidad en un espacio para sanar y compartir." />
+  <meta name="keywords" content="restaurante, vinos, tablas, pizza napolitana, café especialidad, CurArte, experiencia, Loja" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-text">CURARTE</span>
+    </div>
+    <nav class="main-nav">
+      <a href="#experiencia" class="nav-link">Experiencia</a>
+      <a href="#menu" class="nav-link">Menú</a>
+      <a href="#vinos" class="nav-link">Vinos</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-photo-layer"></div>
+    <div class="hero-botanicals hero-botanicals--left"></div>
+    <div class="hero-botanicals hero-botanicals--right"></div>
+
+    <div class="hero-card">
+      <img src="logo.svg" alt="Logo CurArte" class="hero-logo" />
+
+      <p class="hero-overline">🌿 CurArte</p>
+      <h1 class="hero-title">Más que un lugar, una pausa</h1>
+      <p class="hero-text">
+        Un espacio para compartir, cuidar y disfrutar sin prisa.<br>
+        Aquí lo simple se vuelve arte, y cada sabor cuenta una historia.<br>
+        <em>Porque saborear también es una forma de sanar.</em>
+      </p>
+      <button class="btn-primary" data-scroll="#experiencia">
+        Descubre la experiencia
+      </button>
+    </div>
+  </section>
+
+  <section id="experiencia" class="section experience-section">
+    <div class="experience-content reveal">
+      <span class="section-overline">Nuestra Filosofía</span>
+      <h2 class="section-title">✨ La Experiencia</h2>
+      <p>
+        Hay lugares que se disfrutan con los sentidos, y otros que también se sienten con el alma. 
+        CurArte nació de esa idea: la de cuidar, compartir y saborear la vida sin prisa.
+      </p>
+      <p>
+        Aquí, el tiempo se detiene entre aromas, texturas y conversaciones. Cada plato, copa o taza es una expresión de equilibrio: lo artesanal, lo simple y lo auténtico.
+        No buscamos la perfección, sino la verdad detrás de lo que se prepara con dedicación. 
+      </p>
+      <p>
+        <strong>CurArte es más que un lugar para comer; es un recordatorio de que el verdadero sabor está en disfrutar despacio.</strong>
+      </p>
+    </div>
+  </section>
+
+  <main>
+    <section id="menu" class="section menu-section">
+      <header class="section-header">
+        <span class="section-overline">Nuestro Menú</span>
+        <h2 class="section-title">Sabores que curan el día</h2>
+      </header>
+
+      <nav class="menu-tabs">
+        <button class="tab-btn active" data-target="tablas">Tablas</button>
+        <button class="tab-btn" data-target="pizzas">Pizzas</button>
+        <button class="tab-btn" data-target="pastas">Pastas</button>
+        <button class="tab-btn" data-target="sandwiches">Sandwiches</button>
+        <button class="tab-btn" data-target="cocteles">Cócteles</button>
+        <button class="tab-btn" data-target="cafes">Café</button>
+        <button class="tab-btn" data-target="postres">Postres</button>
+      </nav>
+
+      <div class="mobile-scroll-hint">Desliza <span class="arrow">→</span></div>
+
+      <div class="menu-grid">
+        
+        <article class="menu-card" id="tablas">
+          <h3 class="menu-card-title">🧀 Nuestras Tablas</h3>
+          <p class="menu-card-subtitle">De aquí nace CurArte.</p>
+          <details class="story-toggle">
+            <summary>Leer la historia</summary>
+            <div class="story-content">
+              <p>Las tablas son nuestro punto de partida: una invitación a compartir, a descubrir combinaciones, a dejar que los sabores se encuentren sin un orden preestablecido.</p>
+              <p>Cada una es un equilibrio entre texturas, aromas y colores. Quesos, embutidos, frutos y salsas se mezclan con naturalidad. No hay una forma correcta de comerlas, solo la tuya.</p>
+            </div>
+          </details>
+          <ul class="menu-list">
+            <li><span class="item-name">Tabla “Solo para mí”</span><span class="item-meta">1 persona</span><span class="item-price">$6,50</span></li>
+            <li><span class="item-name">Tabla “A Dúo Perfecto”</span><span class="item-meta">2 personas</span><span class="item-price">$13,00</span></li>
+            <li><span class="item-name">Tabla “Encuentro de Sabores”</span><span class="item-meta">4 personas</span><span class="item-price">$25,00</span></li>
+            <li><span class="item-name">Tabla “Brindis y Risas”</span><span class="item-meta">8 personas</span><span class="item-price">$54,00</span></li>
+            <li><span class="item-name">Tabla “Banquete CurArte”</span><span class="item-meta">16 personas</span><span class="item-price">$96,00</span></li>
+          </ul>
+        </article>
+
+        <article class="menu-card" id="pizzas">
+          <h3 class="menu-card-title">🍕 Nuestras Pizzas</h3>
+          <p class="menu-card-subtitle">Fuego, paciencia y tradición.</p>
+          <details class="story-toggle">
+            <summary>El secreto de la masa</summary>
+            <div class="story-content">
+              <p>Inspiradas en la escuela napolitana, celebran la textura viva y los bordes aireados. El secreto está en el <em>cornicione</em> (borde inflado), resultado de una fermentación prolongada.</p>
+              <p>Cada pizza es única, imperfecta y viva. No buscamos rapidez, sino el ritual de disfrutar el momento.</p>
+            </div>
+          </details>
+          <ul class="menu-list">
+            <li><span class="item-name">Serrano &amp; Balsámico</span><span class="item-meta">tomate, mozzarella, serrano, reducción balsámica</span><span class="item-price">$9,50</span></li>
+            <li><span class="item-name">Ibérica Clásica</span><span class="item-meta">tomate, mozzarella, jamón y chorizo ibérico</span><span class="item-price">$7,00</span></li>
+            <li><span class="item-name">Margherita Napoletana</span><span class="item-meta">tomate, mozzarella fresca, albahaca</span><span class="item-price">$6,50</span></li>
+          </ul>
+        </article>
+
+        <article class="menu-card" id="pastas">
+          <h3 class="menu-card-title">🍝 Nuestras Pastas</h3>
+          <p class="menu-card-subtitle">Un viaje al origen.</p>
+          <details class="story-toggle">
+            <summary>La esencia italiana</summary>
+            <div class="story-content">
+              <p>La pasta es un viaje al origen: ingredientes simples, fuego lento y equilibrio. Aquí, la textura importa tanto como el aroma; debe sentirse viva.</p>
+              <p>Más que un plato, es una pausa. La mejor pasta no se mide en minutos, sino en el recuerdo que deja.</p>
+            </div>
+          </details>
+          <ul class="menu-list">
+            <li><span class="item-name">Tagliatelle al Pesto &amp; Filetto</span><span class="item-meta">pesto genovese, res al vino tinto</span><span class="item-price">$9,95</span></li>
+            <li><span class="item-name">Tagliatelle alla Carbonara</span><span class="item-meta">guanciale, yema, parmesano (sin nata)</span><span class="item-price">$9,00</span></li>
+            <li><span class="item-name">Tagliatelle al Pomodoro</span><span class="item-meta">pomodoro artesanal, albóndigas</span><span class="item-price">$8,00</span></li>
+          </ul>
+        </article>
+
+        <article class="menu-card" id="sandwiches">
+          <h3 class="menu-card-title">🥪 Nuestros Sándwiches</h3>
+          <p class="menu-card-subtitle">Equilibrio de texturas.</p>
+          <details class="story-toggle">
+            <summary>Honestos y equilibrados</summary>
+            <div class="story-content">
+              <p>Usamos pan ciabatta de alta hidratación. Lo crujiente y lo cremoso, lo salado y lo dulce.</p>
+              <p>Cada combinación está pensada para despertar los sentidos sin robar atención. Un buen sándwich no grita: susurra con sabor y deja huella.</p>
+            </div>
+          </details>
+          <ul class="menu-list">
+            <li><span class="item-name">El Mediterráneo</span><span class="item-meta">pesto, mozzarella, jamón, chorizo</span><span class="item-price"><small>Desde</small> $5,90</span></li>
+            <li><span class="item-name">Tostada Española</span><span class="item-meta">serrano, stracciatella, masa madre</span><span class="item-price"><small>Desde</small> $7,00</span></li>
+            <li><span class="item-name">Sfumato</span><span class="item-meta">pollo ahumado, cebolla caramelizada</span><span class="item-price"><small>Desde</small> $7,00</span></li>
+            <li><span class="item-name">Roast Beef</span><span class="item-meta">roast beef, cheddar, mostaza alemana</span><span class="item-price"><small>Desde</small> $7,00</span></li>
+          </ul>
+        </article>
+
+        <article class="menu-card" id="cocteles">
+          <h3 class="menu-card-title">🍸 Nuestros Cócteles</h3>
+          <p class="menu-card-subtitle">Momentos que se brindan.</p>
+          <details class="story-toggle">
+            <summary>Pequeños rituales</summary>
+            <div class="story-content">
+              <p>Hay momentos que no se cuentan, se brindan. Cada cóctel nace de equilibrar sabores y emociones.</p>
+              <p>Más que mezclas, son pequeños rituales. Un cóctel bien hecho no se bebe… se recuerda.</p>
+            </div>
+          </details>
+          <ul class="menu-list">
+            <li><span class="item-name">Gin Tonic CurArte</span><span class="item-price">$7,00</span></li>
+            <li><span class="item-name">Aperol Spritz</span><span class="item-price">$7,50</span></li>
+            <li><span class="item-name">Tinto de Verano</span><span class="item-price">$5,50</span></li>
+            <li><span class="item-name">Sangría de la Casa</span><span class="item-price">$6,00</span></li>
+          </ul>
+        </article>
+
+        <article class="menu-card" id="cafes">
+          <h3 class="menu-card-title">☕ Bebidas Calientes</h3>
+          <p class="menu-card-subtitle">Una pausa con propósito.</p>
+          <details class="story-toggle">
+            <summary>El ritual del café</summary>
+            <div class="story-content">
+              <p>Más que una bebida, es un ritual. Trabajamos con café de especialidad. El espresso concentra energía, el cappuccino invita a quedarse, y el latte conversa con el alma.</p>
+            </div>
+          </details>
+          <ul class="menu-list">
+            <li><span class="item-name">Cappuccino</span><span class="item-price">$3,00</span></li>
+            <li><span class="item-name">Mochaccino</span><span class="item-price">$3,25</span></li>
+            <li><span class="item-name">Curamorlatte</span><span class="item-price">$3,50</span></li>
+            <li><span class="item-name">Americano</span><span class="item-price">$2,50</span></li>
+            <li><span class="item-name">Affogato</span><span class="item-price">$4,00</span></li>
+            <li><span class="item-name">Infusiones / Té</span><span class="item-price">$2,50</span></li>
+          </ul>
+        </article>
+
+         <article class="menu-card" id="postres">
+            <h3 class="menu-card-title">🍮 Postres</h3>
+            <p class="menu-card-subtitle">El arte también puede ser dulce.</p>
+            <ul class="menu-list">
+              <li><span class="item-name">Cura de Verano</span><span class="item-meta">duraznos asados, serrano, stracciatella</span><span class="item-price">$7,00</span></li>
+              <li><span class="item-name">Postre del día</span><span class="item-meta">pregunta por la creación del día</span><span class="item-price">$3,00</span></li>
+            </ul>
+          </article>
+      </div>
+    </section>
+
+    <section id="vinos" class="section vinos-section">
+      <header class="section-header">
+        <span class="section-overline">La Cava</span>
+        <h2 class="section-title">El vino en CurArte</h2>
+        <p class="section-description">
+            El vino no acompaña: dialoga.<br>
+            Cambia con la luz, con la compañía y con el momento.
+        </p>
+      </header>
+      
+      <div class="wine-guide-container">
+        <div class="wine-guide-card reveal">
+            <h3>🍇 Cómo catar y disfrutar</h3>
+            <p class="guide-intro">No se trata de saber más, sino de sentir más. Déjate guiar por tus sentidos:</p>
+            <div class="guide-steps">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <div class="step-text"><strong>Observa:</strong> Mira su color y brillo. Violáceos en jóvenes, densos en maduros.</div>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <div class="step-text"><strong>Huele:</strong> Acércalo con calma. El primer aroma es su presentación; el segundo, su alma.</div>
+                </div>
+                <div class="step">
+                    <span class="step-num">3</span>
+                    <div class="step-text"><strong>Prueba:</strong> Percibe su textura, dulzor y acidez. Cada sorbo revela algo nuevo.</div>
+                </div>
+                <div class="step">
+                    <span class="step-num">4</span>
+                    <div class="step-text"><strong>Siente:</strong> Atención al final. Su frescura o calidez revelan su carácter.</div>
+                </div>
+            </div>
+            <p class="guide-tip">
+                <em><strong>Consejo CurArte:</strong> El mejor vino no siempre es el más caro, sino el que logra quedarse en la memoria.</em>
+            </p>
+        </div>
+      </div>
+
+      <div class="mobile-scroll-hint" style="margin-top:2rem;">Desliza <span class="arrow">→</span></div>
+
+      <div class="vinos-grid">
+        <article class="vino-card">
+          <div class="vino-intensidad intensidad-suave"></div>
+          <h3 class="vino-name">Peñasol Tinto</h3>
+          <p class="vino-meta">España · Semidulce</p>
+          <p class="vino-notas">Frutal y ligeramente dulce, ideal para quienes buscan un vino amable.</p>
+          <p class="vino-precio">Botella $15,00 · Copa $3,50</p>
+        </article>
+        <article class="vino-card">
+          <div class="vino-intensidad intensidad-media"></div>
+          <h3 class="vino-name">Viña Albali Tinto</h3>
+          <p class="vino-meta">España · Valdepeñas</p>
+          <p class="vino-notas">Aromas de vainilla y fruta madura. Cuerpo equilibrado.</p>
+          <p class="vino-precio">Botella $18,00 · Copa $4,50</p>
+        </article>
+        <article class="vino-card">
+          <div class="vino-intensidad intensidad-alta"></div>
+          <h3 class="vino-name">Viña Albali Reserva</h3>
+          <p class="vino-meta">España · Reserva</p>
+          <p class="vino-notas">Frutos rojos, notas especiadas y redondez. Clásico y versátil.</p>
+          <p class="vino-precio">Botella $24,00 · Copa $5,50</p>
+        </article>
+        <article class="vino-card">
+          <div class="vino-intensidad intensidad-alta"></div>
+          <h3 class="vino-name">Pascual Toso Estate</h3>
+          <p class="vino-meta">Argentina · Malbec</p>
+          <p class="vino-notas">Aromas de ciruela madura, mora y vainilla. Final largo con roble.</p>
+          <p class="vino-precio">Botella $24,00 · Copa $5,50</p>
+        </article>
+        <article class="vino-card">
+            <div class="vino-intensidad intensidad-alta"></div>
+            <h3 class="vino-name">Circus Malbec</h3>
+            <p class="vino-meta">Argentina · Mendoza</p>
+            <p class="vino-notas">Intensos aromas de ciruelas y violetas. Taninos sedosos.</p>
+            <p class="vino-precio">Botella $18,00 · Copa $4,50</p>
+        </article>
+         <article class="vino-card">
+            <div class="vino-intensidad intensidad-media"></div>
+            <h3 class="vino-name">Concha y Toro</h3>
+            <p class="vino-meta">Chile · Reservado</p>
+            <p class="vino-notas">Bayas maduras, taninos sedosos, toque de madera.</p>
+            <p class="vino-precio">Botella $18,00 · Copa $4,50</p>
+        </article>
+      </div>
+
+      <div class="leyenda-intensidad">
+        <span class="leyenda-title">Intensidad:</span>
+        <span><span class="punto intensidad-suave"></span> Suave</span>
+        <span><span class="punto intensidad-media"></span> Media</span>
+        <span><span class="punto intensidad-alta"></span> Alta</span>
+      </div>
+    </section>
+
+    <section id="contacto" class="section contacto-section">
+      <header class="section-header">
+        <span class="section-overline">Visítanos</span>
+        <h2 class="section-title">🌾 El arte de detenerse</h2>
+        <p class="section-description">
+            Lo simple, cuando se hace con alma, se vuelve arte.<br>
+            Gracias por compartir tu tiempo con nosotros.
+        </p>
+      </header>
+      <div class="contacto-actions">
+        <button id="btnReserva" class="btn-primary">Reservar por WhatsApp</button>
+        
+        <a href="https://maps.app.goo.gl/WoHJsoPS1w8z2GYk8" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+          Ver ubicación en el mapa
+        </a>
+      </div>
+      
+      <p class="footer-copy">
+        CurArte · Charcuterie · Wine & Coffee
+      </p>
+
+      <a href="https://www.instagram.com/neckarc/" target="_blank" class="designer-credit">
+        Diseñado por Marco Pérez @ 2025 Derechos reservados
+      </a>
+    </section>
+  </main>
+
+  <div class="fab-container" id="fabFood">
+    <div class="fab-options">
+      <button class="fab-item tab-btn" data-target="tablas">🧀 Tablas</button>
+      <button class="fab-item tab-btn" data-target="pizzas">🍕 Pizzas</button>
+      <button class="fab-item tab-btn" data-target="pastas">🍝 Pastas</button>
+      <button class="fab-item tab-btn" data-target="sandwiches">🥪 Sándwiches</button>
+      <button class="fab-item tab-btn" data-target="cocteles">🍸 Cócteles</button>
+      <button class="fab-item tab-btn" data-target="cafes">☕ Café</button>
+      <button class="fab-item tab-btn" data-target="postres">🍮 Postres</button>
+    </div>
+    <button class="fab-main" id="fabTriggerFood">
+      <span class="fab-icon">🍴</span>
+      <span class="fab-text">Carta</span>
+      <span class="fab-close">✕</span>
+    </button>
+  </div>
+
+  <div class="fab-container fab-nav-pos" id="fabNav">
+    <div class="fab-options">
+      <a href="#experiencia" class="fab-item nav-fab-link">✨ Experiencia</a>
+      <a href="#menu" class="fab-item nav-fab-link">🍴 Menú Completo</a>
+      <a href="#vinos" class="fab-item nav-fab-link">🍷 Vinos</a>
+      <button class="fab-item nav-fab-link" id="fabBtnReserva">📅 Reservar</button>
+    </div>
+    <button class="fab-main fab-nav-style" id="fabTriggerNav">
+      <span class="fab-icon">☰</span>
+      <span class="fab-close">✕</span>
+    </button>
+  </div>
+
+  <div id="reservationModal" class="modal-overlay">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      
+      <div class="modal-header">
+        <h2>Reserva tu mesa</h2>
+        <p class="modal-subtitle">Estás a un paso de vivir la experiencia CurArte</p>
+      </div>
+
+      <div class="bank-info-box">
+        <h3>Datos para transferencia</h3>
+        <p><strong>Banco:</strong> [NOMBRE DEL BANCO]</p>
+        <p><strong>Cuenta:</strong> [TIPO] [NÚMERO DE CUENTA]</p>
+        <p><strong>Nombre:</strong> CurArte</p>
+        <p><strong>CI/RUC:</strong> [NÚMERO]</p>
+      </div>
+
+      <form id="reservationForm">
+        <div class="form-group">
+          <label for="resName">Nombre de quien reserva:</label>
+          <input type="text" id="resName" placeholder="Ej: Juan Pérez" required>
+        </div>
+
+        <div class="form-group">
+          <label for="resOrder">¿Qué deseas ordenar?</label>
+          <textarea id="resOrder" placeholder="Ej: Una tabla Dúo Perfecto y dos vinos tintos..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="resTime">Hora de llegada:</label>
+          <input type="time" id="resTime" required>
+        </div>
+
+        <div class="modal-warning">
+          <p>⚠️ <strong>Importante:</strong> Al dar clic en "Siguiente", se abrirá WhatsApp. <strong>Recuerda adjuntar la foto del comprobante de pago</strong> para confirmar tu reserva.</p>
+        </div>
+
+        <button type="submit" class="btn-primary btn-block">Siguiente &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
