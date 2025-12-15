@@ -5,11 +5,12 @@
   <title>CurArte · Sabores que encantan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <meta name="description" content="CurArte: Más que un lugar, una pausa. Disfruta de tablas de quesos, vinos, pizzas napolitanas y café de especialidad en un espacio para sanar y compartir." />
+  <meta name="description" content="CurArte: Más que un lugar, una pausa. Disfruta de tablas de quesos, vinos, pizzas napolitanas y café de especialidad." />
   <meta name="keywords" content="restaurante, vinos, tablas, pizza napolitana, café especialidad, CurArte, experiencia, Loja" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
   <header class="site-header">
@@ -36,7 +37,7 @@
         Aquí lo simple se vuelve arte, y cada sabor cuenta una historia.<br>
         <em>Porque saborear también es una forma de sanar.</em>
       </p>
-      <button class="btn-primary" data-scroll="#experiencia">
+      <button class="btn-primary" onclick="document.querySelector('#experiencia').scrollIntoView({ behavior: 'smooth' })">
         Descubre la experiencia
       </button>
     </div>
@@ -303,9 +304,7 @@
         </p>
       </header>
       <div class="contacto-actions">
-        <button id="btnReserva" class="btn-primary">Reservar por WhatsApp</button>
-        
-        <a href="https://maps.app.goo.gl/WoHJsoPS1w8z2GYk8" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+        <a href="https://maps.google.com/?q=-4.008064,-79.212001" target="_blank" rel="noopener noreferrer" class="btn-ghost">
           Ver ubicación en el mapa
         </a>
       </div>
@@ -320,7 +319,14 @@
     </section>
   </main>
 
-  <div class="fab-container" id="fabFood">
+  <div class="fab-container fab-cart-pos" id="fabCart">
+      <button class="fab-main fab-cart-style" id="fabCartTrigger">
+          <i class="fa-solid fa-calendar-check" style="font-size: 1.5rem;"></i>
+          <span id="cartBadge" class="fab-badge" style="display: none;">0</span>
+      </button>
+  </div>
+
+  <div class="fab-container fab-food-pos" id="fabFood">
     <div class="fab-options">
       <button class="fab-item tab-btn" data-target="tablas">🧀 Tablas</button>
       <button class="fab-item tab-btn" data-target="pizzas">🍕 Pizzas</button>
@@ -342,8 +348,7 @@
       <a href="#experiencia" class="fab-item nav-fab-link">✨ Experiencia</a>
       <a href="#menu" class="fab-item nav-fab-link">🍴 Menú Completo</a>
       <a href="#vinos" class="fab-item nav-fab-link">🍷 Vinos</a>
-      <button class="fab-item nav-fab-link" id="fabBtnReserva">📅 Reservar</button>
-    </div>
+      </div>
     <button class="fab-main fab-nav-style" id="fabTriggerNav">
       <span class="fab-icon">☰</span>
       <span class="fab-close">✕</span>

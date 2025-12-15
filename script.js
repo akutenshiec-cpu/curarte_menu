@@ -1,15 +1,61 @@
 // ==========================================
-// 1. STATE & CART LOGIC
+// 1. STATE & CART LOGIC (CON PERSISTENCIA)
 // ==========================================
 let cart = {}; 
+const STORAGE_KEY = 'curarte_cart_v1'; // Clave para guardar en el navegador
+const STORAGE_NAME = 'curarte_user_name'; // Clave para guardar nombre
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Recuperar datos guardados
+    loadCartData();
+    
+    // 2. Iniciar UI
     injectMenuControls();
+    
+    // Configurar FABs
     setupFab('fabTriggerFood', 'fabFood');
     setupFab('fabTriggerNav', 'fabNav');
+    
+    // Configurar nueva burbuja del carrito (Direct Action, no menu)
+    const cartTrigger = document.getElementById('fabCartTrigger');
+    if(cartTrigger) {
+        cartTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
     setupScrollLogic();
     setupModalLogic();
+    
+    // 3. Restaurar nombre si existe
+    const savedName = localStorage.getItem(STORAGE_NAME);
+    if(savedName && document.getElementById('resName')) {
+        document.getElementById('resName').value = savedName;
+    }
+
+    // 4. Actualizar contadores iniciales
+    Object.keys(cart).forEach(name => {
+        updateDisplay(name, cart[name].qty);
+    });
+    updateTotalBadge();
 });
+
+function loadCartData() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        try {
+            cart = JSON.parse(saved);
+        } catch (e) {
+            console.error("Error cargando carrito", e);
+            cart = {};
+        }
+    }
+}
+
+function saveCartData() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+}
 
 function injectMenuControls() {
     const menuItems = document.querySelectorAll('.menu-list li');
@@ -21,7 +67,16 @@ function injectMenuControls() {
 
         if (nameEl && priceEl) {
             const name = nameEl.innerText.trim();
-            let rawPrice = priceEl.innerText.replace('$', '').replace('Desde', '').trim().replace(',', '.');
+            // Limpieza del precio para convertir a número
+            let rawPrice = priceEl.innerText
+                .replace('$', '')
+                .replace('Desde', '')
+                .replace('Copa', '')
+                .replace('Botella', '')
+                .split('·')[0] // Por si tiene "Botella x · Copa y", toma el primero
+                .trim()
+                .replace(',', '.');
+                
             const price = parseFloat(rawPrice) || 0;
             const meta = metaEl ? metaEl.innerText : '';
 
@@ -59,6 +114,9 @@ function updateCart(name, price, meta, change) {
         updateDisplay(name, cart[name].qty);
     }
 
+    // Guardar cambios en memoria
+    saveCartData();
+    
     updateTotalBadge();
     updateModalCart(); 
 }
@@ -75,9 +133,20 @@ function updateDisplay(name, qty) {
 
 function updateTotalBadge() {
     const totalQty = Object.values(cart).reduce((acc, item) => acc + item.qty, 0);
-    const fabBtn = document.getElementById('fabBtnReserva');
-    if (fabBtn) {
-        fabBtn.innerText = totalQty > 0 ? `📅 Reservar (${totalQty})` : `📅 Reservar`;
+    const cartBadge = document.getElementById('cartBadge');
+    
+    // Actualizamos la burbuja roja
+    if (cartBadge) {
+        cartBadge.innerText = totalQty;
+        if (totalQty > 0) {
+            cartBadge.style.display = "flex";
+            // Pequeña animación de pulso
+            cartBadge.style.animation = 'none';
+            cartBadge.offsetHeight; /* trigger reflow */
+            cartBadge.style.animation = 'popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        } else {
+            cartBadge.style.display = "none";
+        }
     }
 }
 
@@ -136,10 +205,12 @@ function updateModalCart() {
     totalDisplay.innerText = `$${total.toFixed(2)}`;
 }
 
+// Botón "Vaciar carrito"
 document.getElementById('btnClearCart')?.addEventListener('click', (e) => {
     e.preventDefault();
     Object.keys(cart).forEach(name => updateDisplay(name, 0));
     cart = {};
+    saveCartData(); // Guardar el vaciado
     updateTotalBadge();
     updateModalCart();
 });
@@ -147,20 +218,26 @@ document.getElementById('btnClearCart')?.addEventListener('click', (e) => {
 // ==========================================
 // 3. WHATSAPP GENERATOR & MODAL LOGIC
 // ==========================================
-const btnReservaMain = document.getElementById("btnReserva");
-const fabBtnReserva = document.getElementById('fabBtnReserva');
 const closeModalSpan = document.querySelector(".close-modal");
 const reservationForm = document.getElementById("reservationForm");
+const inputName = document.getElementById('resName');
+
+// Guardar nombre al escribir
+if(inputName) {
+    inputName.addEventListener('input', (e) => {
+        localStorage.setItem(STORAGE_NAME, e.target.value);
+    });
+}
 
 function openModal() {
     updateModalCart(); 
     reservationModal.style.display = "flex";
-    document.getElementById('fabNav').classList.remove('active');
+    // Si algún menú FAB está abierto, cerrarlo
+    document.querySelectorAll('.fab-container').forEach(fab => fab.classList.remove('active'));
 }
 
 function setupModalLogic() {
-    if (btnReservaMain) btnReservaMain.addEventListener("click", (e) => { e.preventDefault(); openModal(); });
-    if (fabBtnReserva) fabBtnReserva.addEventListener("click", (e) => { e.preventDefault(); openModal(); });
+    // Ya no usamos btnReservaMain o fabBtnReserva antiguos
     if (closeModalSpan) closeModalSpan.addEventListener("click", () => reservationModal.style.display = "none");
     window.addEventListener("click", (e) => { if (e.target === reservationModal) reservationModal.style.display = "none"; });
 
@@ -195,7 +272,8 @@ function setupModalLogic() {
             const phone = "593999777870";
             const url = `https://wa.me/${phone}?text=${message}`;
             window.open(url, '_blank');
-
+            
+            // Opcional: Cerrar modal después de enviar
             reservationModal.style.display = "none";
         });
     }
@@ -210,6 +288,7 @@ function setupFab(triggerId, containerId) {
     if (trigger && container) {
         trigger.addEventListener('click', (e) => {
             e.stopPropagation();
+            // Cerrar otros menús si hay más de uno abierto
             document.querySelectorAll('.fab-container').forEach(fab => {
                 if (fab !== container) fab.classList.remove('active');
             });

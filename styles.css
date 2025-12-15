@@ -6,7 +6,6 @@
   --accent-red: #ED1C24;  
   --accent-gold: #c4a46b; 
   
-  /* CAMBIO: Opacidad al 20% (0.2) para ver el fondo */
   --card-bg: rgba(255, 255, 255, 0.2);
   
   --border-soft: rgba(0, 0, 0, 0.08);
@@ -73,7 +72,6 @@ body {
   position: absolute; inset: 0;
   background-image: url("images/hero-bg.jpg"); 
   background-size: cover; 
-  /* Alineación por defecto (Escritorio) */
   background-position: center right;
   opacity: 0.45; mix-blend-mode: multiply;
   transition: background-position 0.3s ease;
@@ -88,15 +86,11 @@ body {
 .hero-card {
   position: relative; max-width: 480px; padding: 2.6rem 3rem 3rem;
   background: var(--card-bg); border-radius: 4px;
-  /* Borde sutil */
   border: 1px solid rgba(255, 255, 255, 0.2); 
   border-top: 4px solid var(--accent-red);
   box-shadow: var(--shadow-soft);
-  
-  /* EFECTO VIDRIO ESMERILADO (Crucial para opacidad 20%) */
   backdrop-filter: blur(20px); 
   -webkit-backdrop-filter: blur(20px);
-  
   z-index: 2; transform: translateY(22px); opacity: 0;
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
@@ -120,7 +114,6 @@ body {
 .hero-text {
   font-size: 1rem; line-height: 1.7; color: var(--text-main);
   margin-bottom: 2rem; font-weight: 500;
-  /* Halo suave para legibilidad sobre el fondo */
   text-shadow: 0 0 25px rgba(255,255,255,0.9);
 }
 
@@ -262,52 +255,97 @@ body {
 .story-content { margin-top: 1rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-soft); font-style: italic; animation: fadeIn 0.5s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) { .menu-grid, .vinos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-
-@media (max-width: 768px) {
-  /* CAMBIO: ALINEACIÓN FONDO HERO IZQUIERDA EN MÓVIL */
-  .hero-photo-layer { background-position: center left !important; }
-
-  .main-nav { display: none; }
-  .site-header { padding: 0.5rem 4vw; }
-  .hero { padding: 6rem 6vw 4rem; text-align: center; justify-content: center; }
-  .hero-logo { margin: 0 auto 1.5rem; max-width: 100%; } 
-  .hero-title { font-size: 2.5rem; }
-  .menu-tabs { display: none !important; }
-  .menu-grid, .vinos-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding-bottom: 2rem; padding-inline: 0.5rem; scrollbar-width: none; }
-  .menu-grid::-webkit-scrollbar, .vinos-grid::-webkit-scrollbar { display: none; }
-  .menu-card, .vino-card { flex: 0 0 85%; width: 85%; min-width: 85%; scroll-snap-align: center; }
-  .menu-list li { grid-template-columns: 1fr; gap: 0.3rem; }
-  .item-price { justify-self: flex-start; text-align: left; font-size: 1rem; }
-  .guide-steps { grid-template-columns: 1fr; }
-  
-  .mobile-scroll-hint { display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-red); margin-bottom: 0.5rem; padding-right: 1rem; font-weight: 700; opacity: 0.8; }
-  .mobile-scroll-hint .arrow { display: inline-block; animation: bounce-right 1.5s infinite ease-in-out; }
-  @keyframes bounce-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
-
-  /* FAB Responsive */
-  .fab-container { display: flex; flex-direction: column; align-items: flex-end; position: fixed; bottom: 2rem; right: 1.5rem; z-index: 1000; pointer-events: none; }
-  .fab-main, .fab-options { pointer-events: auto; }
-  .fab-container.active { z-index: 3000 !important; }
-  .fab-nav-pos { bottom: 7rem; z-index: 1001; }
-  .fab-nav-style { background-color: #fff !important; color: var(--text-main) !important; border: 2px solid var(--accent-gold) !important; }
-  .nav-fab-link { text-decoration: none; display: block; text-align: right; font-weight: 700; color: var(--text-main); }
-  .fab-main { background-color: var(--accent-red); color: white; border: none; width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 4px 15px rgba(237, 28, 36, 0.4); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-family: "Raleway", sans-serif; }
-  .fab-main:active { transform: scale(0.95); }
-  .fab-icon { font-size: 1.5rem; line-height: 1; }
-  .fab-text { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; margin-top: 2px; }
-  .fab-close { display: none; font-size: 1.5rem; font-weight: 700; }
-  .fab-container.active .fab-main { background-color: var(--text-main); }
-  .fab-container.active .fab-icon, .fab-container.active .fab-text { display: none; }
-  .fab-container.active .fab-close { display: block; }
-  .fab-options { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; margin-bottom: 1rem; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.3s ease; }
-  .fab-container.active .fab-options { opacity: 1; visibility: visible; transform: translateY(0); }
-  .fab-item { background-color: white; color: var(--text-main); border: 1px solid var(--border-soft); padding: 0.8rem 1.2rem; border-radius: 50px; font-family: "Raleway", sans-serif; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; white-space: nowrap; transition: background 0.2s; text-transform: capitalize; }
-  .fab-item:hover, .fab-item:active { background-color: var(--bg-paper); color: var(--accent-red); }
+/* ========================================================== */
+/* FAB (Floating Action Button) - ESTILOS BASE Y POSICIONES */
+/* ========================================================== */
+.fab-container { 
+  display: flex; flex-direction: column; align-items: flex-end; 
+  position: fixed; right: 1.5rem; 
+  z-index: 1000; pointer-events: none; 
 }
-.mobile-scroll-hint { display: none; }
-@media (max-width: 768px) { .mobile-scroll-hint { display: flex; } }
+.fab-main, .fab-options { pointer-events: auto; }
+
+/* 1. Posición Carrito (Abajo del todo) */
+.fab-cart-pos { bottom: 2rem; z-index: 1005; }
+
+/* 2. Posición Carta Comida (En medio) */
+.fab-food-pos { bottom: 6.5rem; }
+
+/* 3. Posición Navegación (Arriba) */
+.fab-nav-pos { bottom: 11rem; z-index: 1001; }
+
+/* Estilo Botón Principal */
+.fab-main { 
+  background-color: var(--accent-red); color: white; border: none; 
+  width: 60px; height: 60px; border-radius: 50%; 
+  box-shadow: 0 4px 15px rgba(237, 28, 36, 0.4); 
+  cursor: pointer; display: flex; flex-direction: column; 
+  align-items: center; justify-content: center; 
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  font-family: "Raleway", sans-serif; position: relative; /* Para el badge absoluto */
+}
+.fab-main:active { transform: scale(0.95); }
+
+/* Estilos específicos por tipo */
+.fab-cart-style { background-color: var(--text-main); color: var(--accent-gold); border: 2px solid var(--accent-gold); }
+.fab-cart-style:hover { transform: scale(1.1); }
+.fab-nav-style { background-color: #fff !important; color: var(--text-main) !important; border: 2px solid var(--accent-gold) !important; }
+
+/* Iconos y Textos */
+.fab-icon { font-size: 1.5rem; line-height: 1; }
+.fab-text { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; margin-top: 2px; }
+.fab-close { display: none; font-size: 1.5rem; font-weight: 700; }
+
+/* Estado Activo (Para menús desplegables) */
+.fab-container.active { z-index: 3000 !important; }
+.fab-container.active .fab-main { background-color: var(--text-main); }
+.fab-container.active .fab-icon, .fab-container.active .fab-text { display: none; }
+.fab-container.active .fab-close { display: block; }
+
+/* Opciones del menú (ocultas por defecto) */
+.fab-options { 
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; 
+  margin-bottom: 1rem; opacity: 0; visibility: hidden; 
+  transform: translateY(20px); transition: all 0.3s ease; 
+}
+.fab-container.active .fab-options { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* Items del menú flotante */
+.fab-item { 
+  background-color: white; color: var(--text-main); 
+  border: 1px solid var(--border-soft); padding: 0.8rem 1.2rem; 
+  border-radius: 50px; font-family: "Raleway", sans-serif; 
+  font-weight: 700; font-size: 0.9rem; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; 
+  white-space: nowrap; transition: background 0.2s; text-transform: capitalize; 
+}
+.fab-item:hover, .fab-item:active { background-color: var(--bg-paper); color: var(--accent-red); }
+.nav-fab-link { text-decoration: none; display: block; text-align: right; font-weight: 700; color: var(--text-main); }
+
+/* BADGE DEL CARRITO (CONTADOR ROJO) */
+.fab-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--accent-red);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
 
 /* MODAL */
 .modal-overlay { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
@@ -328,3 +366,24 @@ body {
 .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-gold); }
 .modal-warning { font-size: 0.85rem; color: #856404; background-color: #fff3cd; border: 1px solid #ffeeba; padding: 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; line-height: 1.4; }
 .btn-block { width: 100%; display: block; text-align: center; border: none; font-size: 1rem; padding: 1rem; }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) { .menu-grid, .vinos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) {
+  .hero-photo-layer { background-position: center left !important; }
+  .main-nav { display: none; }
+  .site-header { padding: 0.5rem 4vw; }
+  .hero { padding: 6rem 6vw 4rem; text-align: center; justify-content: center; }
+  .hero-logo { margin: 0 auto 1.5rem; max-width: 100%; } 
+  .hero-title { font-size: 2.5rem; }
+  .menu-tabs { display: none !important; }
+  .menu-grid, .vinos-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding-bottom: 2rem; padding-inline: 0.5rem; scrollbar-width: none; }
+  .menu-grid::-webkit-scrollbar, .vinos-grid::-webkit-scrollbar { display: none; }
+  .menu-card, .vino-card { flex: 0 0 85%; width: 85%; min-width: 85%; scroll-snap-align: center; }
+  .menu-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .item-price { justify-self: flex-start; text-align: left; font-size: 1rem; }
+  .guide-steps { grid-template-columns: 1fr; }
+  .mobile-scroll-hint { display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-red); margin-bottom: 0.5rem; padding-right: 1rem; font-weight: 700; opacity: 0.8; }
+  .mobile-scroll-hint .arrow { display: inline-block; animation: bounce-right 1.5s infinite ease-in-out; }
+}
+@media (max-width: 768px) { .mobile-scroll-hint { display: flex; } }
