@@ -651,13 +651,29 @@
       </div>
 
       <div class="bank-info-box">
-        <h3>Datos para transferencia</h3>
-        <p><strong>Banco:</strong> [NOMBRE DEL BANCO]</p>
-        <p><strong>Cuenta:</strong> [TIPO] [NÚMERO DE CUENTA]</p>
-        <p><strong>Nombre:</strong> CurArte</p>
-        <p><strong>CI/RUC:</strong> [NÚMERO]</p>
-      </div>
+        <h3>Datos de Pago</h3>
+        <div class="form-group">
+          <label for="paymentMethodSelector">Selecciona el método de pago:</label>
+          <select id="paymentMethodSelector" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-soft); border-radius: 4px; font-family: 'Raleway', sans-serif;">
+              <option value="">-- Elige una opción --</option>
+              <option value="loja">Banco de Loja (Transferencia)</option>
+              <option value="deuna">De Una / Banco Pichincha (QR)</option>
+          </select>
+        </div>
 
+        <div id="infoLoja" class="payment-details hidden">
+            <p><strong>Banco:</strong> Banco de Loja</p>
+            <p><strong>Tipo:</strong> Cuenta de Ahorros</p>
+            <p><strong>Número:</strong> 2905182715</p>
+            <p><strong>Titular:</strong> PEREZ CELI, ISMAEL ALEJANDRO</p>
+            <p><strong>C.I.:</strong> 1104136492</p>
+        </div>
+
+        <div id="infoDeuna" class="payment-details hidden" style="text-align: center;">
+            <p style="margin-bottom:0.5rem;">Escanea para pagar con De Una:</p>
+            <img src="images/deunaqr.png" alt="QR De Una" style="max-width: 200px; width: 100%; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+      </div>
       <form id="reservationForm">
         <div class="form-group">
           <label for="resName">Nombre de quien reserva:</label>

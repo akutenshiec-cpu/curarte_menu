@@ -142,9 +142,34 @@ document.getElementById('btnClearCart')?.addEventListener('click', (e) => {
   updateUI();
 });
 
+// NUEVO: LÓGICA SELECTOR DE PAGO
+function setupPaymentSelector() {
+  const selector = document.getElementById('paymentMethodSelector');
+  const infoLoja = document.getElementById('infoLoja');
+  const infoDeuna = document.getElementById('infoDeuna');
+
+  if (selector && infoLoja && infoDeuna) {
+    selector.addEventListener('change', (e) => {
+      const val = e.target.value;
+      
+      // Ocultar ambos primero
+      infoLoja.classList.add('hidden');
+      infoDeuna.classList.add('hidden');
+
+      // Mostrar según selección
+      if (val === 'loja') {
+        infoLoja.classList.remove('hidden');
+      } else if (val === 'deuna') {
+        infoDeuna.classList.remove('hidden');
+      }
+    });
+  }
+}
+
 // Inicializar al cargar
 document.addEventListener('DOMContentLoaded', () => {
   setupCartListeners();
+  setupPaymentSelector(); // Activar selector de pago
   loadState(); // Restaurar datos
 });
 
