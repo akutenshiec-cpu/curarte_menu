@@ -20,9 +20,11 @@ function loadState() {
     const formData = JSON.parse(savedForm);
     const nameInput = document.getElementById('resName');
     const notesInput = document.getElementById('resNotes');
+    const dateInput = document.getElementById('resDate'); // Nuevo campo fecha
     
     if (nameInput) nameInput.value = formData.name || '';
     if (notesInput) notesInput.value = formData.notes || '';
+    if (dateInput) dateInput.value = formData.date || '';
   }
 }
 
@@ -35,7 +37,8 @@ function saveCart() {
 function saveForm() {
   const name = document.getElementById('resName')?.value || '';
   const notes = document.getElementById('resNotes')?.value || '';
-  localStorage.setItem('curarteForm', JSON.stringify({ name, notes }));
+  const date = document.getElementById('resDate')?.value || ''; // Capturar fecha
+  localStorage.setItem('curarteForm', JSON.stringify({ name, notes, date }));
 }
 
 // Inicializar Listeners del Menú (Botones + y -)
@@ -57,6 +60,7 @@ function setupCartListeners() {
   // Listeners para inputs del formulario (guardado automático)
   document.getElementById('resName')?.addEventListener('input', saveForm);
   document.getElementById('resNotes')?.addEventListener('input', saveForm);
+  document.getElementById('resDate')?.addEventListener('input', saveForm); // Listener fecha
 }
 
 // Actualizar Cantidad
@@ -376,6 +380,7 @@ if (reservationModal) {
       e.preventDefault();
       const name = document.getElementById("resName").value;
       const notes = document.getElementById("resNotes").value;
+      const date = document.getElementById("resDate").value; // Capturar fecha
       const time = document.getElementById("resTime").value;
 
       // CONSTRUIR MENSAJE DEL CARRITO
@@ -398,6 +403,7 @@ if (reservationModal) {
 
       const message = `Hola CurArte, deseo realizar una reserva.%0A%0A` +
                       `👤 *Nombre:* ${name}%0A` +
+                      `📅 *Fecha:* ${date}%0A` + // Incluir fecha
                       `⏰ *Hora:* ${time}%0A` +
                       `📝 *Notas:* ${notes}%0A%0A` +
                       `${orderText}%0A` +
