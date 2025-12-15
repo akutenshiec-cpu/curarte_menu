@@ -109,7 +109,27 @@ function renderCartInModal() {
   const itemNames = Object.keys(cart);
   
   if (itemNames.length === 0) {
-    container.innerHTML = '<p class="empty-cart-msg">Aún no has seleccionado productos.</p>';
+    // ESTADO VACÍO CON BOTÓN
+    container.innerHTML = `
+        <div class="empty-state-container">
+            <p class="empty-cart-msg">Aún no has seleccionado productos.</p>
+            <button id="btnGoToMenu" class="btn-ghost-sm" style="margin: 0 auto; display: block;">Ir al Menú</button>
+        </div>
+    `;
+    
+    // Listener para cerrar modal y navegar al menú
+    document.getElementById('btnGoToMenu').addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.getElementById("reservationModal");
+        if(modal) modal.style.display = "none";
+        
+        const menuSec = document.getElementById('menu');
+        if(menuSec) {
+            const y = menuSec.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: y, behavior: "smooth" });
+        }
+    });
+
   } else {
     itemNames.forEach(name => {
       const item = cart[name];
