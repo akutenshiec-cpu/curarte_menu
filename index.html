@@ -5,12 +5,12 @@
   <title>CurArte · Sabores que encantan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <meta name="description" content="CurArte: Más que un lugar, una pausa. Disfruta de tablas de quesos, vinos, pizzas napolitanas y café de especialidad." />
+  <meta name="description" content="CurArte: Más que un lugar, una pausa. Disfruta de tablas de quesos, vinos, pizzas napolitanas y café de especialidad en un espacio para sanar y compartir." />
   <meta name="keywords" content="restaurante, vinos, tablas, pizza napolitana, café especialidad, CurArte, experiencia, Loja" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <header class="site-header">
@@ -27,6 +27,7 @@
 
   <section class="hero" id="inicio">
     <div class="hero-photo-layer"></div>
+    
     <div class="hero-card">
       <img src="logo.svg" alt="Logo CurArte" class="hero-logo" />
 
@@ -37,7 +38,7 @@
         Aquí lo simple se vuelve arte, y cada sabor cuenta una historia.<br>
         <em>Porque saborear también es una forma de sanar.</em>
       </p>
-      <button class="btn-primary" onclick="document.querySelector('#experiencia').scrollIntoView({ behavior: 'smooth' })">
+      <button class="btn-primary" data-scroll="#experiencia">
         Descubre la experiencia
       </button>
     </div>
@@ -93,11 +94,61 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">Tabla “Solo para mí”</span><span class="item-meta">1 persona</span><span class="item-price">$6,50</span></li>
-            <li><span class="item-name">Tabla “A Dúo Perfecto”</span><span class="item-meta">2 personas</span><span class="item-price">$13,00</span></li>
-            <li><span class="item-name">Tabla “Encuentro de Sabores”</span><span class="item-meta">4 personas</span><span class="item-price">$25,00</span></li>
-            <li><span class="item-name">Tabla “Brindis y Risas”</span><span class="item-meta">8 personas</span><span class="item-price">$54,00</span></li>
-            <li><span class="item-name">Tabla “Banquete CurArte”</span><span class="item-meta">16 personas</span><span class="item-price">$96,00</span></li>
+            <li data-name="Tabla Solo para mí" data-price="6.50">
+              <div><span class="item-name">Tabla “Solo para mí”</span><span class="item-meta">1 persona</span></div>
+              <div class="price-controls">
+                <span class="item-price">$6,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tabla A Dúo Perfecto" data-price="13.00">
+              <div><span class="item-name">Tabla “A Dúo Perfecto”</span><span class="item-meta">2 personas</span></div>
+              <div class="price-controls">
+                <span class="item-price">$13,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tabla Encuentro de Sabores" data-price="25.00">
+              <div><span class="item-name">Tabla “Encuentro de Sabores”</span><span class="item-meta">4 personas</span></div>
+              <div class="price-controls">
+                <span class="item-price">$25,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tabla Brindis y Risas" data-price="54.00">
+              <div><span class="item-name">Tabla “Brindis y Risas”</span><span class="item-meta">8 personas</span></div>
+              <div class="price-controls">
+                <span class="item-price">$54,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tabla Banquete CurArte" data-price="96.00">
+              <div><span class="item-name">Tabla “Banquete CurArte”</span><span class="item-meta">16 personas</span></div>
+              <div class="price-controls">
+                <span class="item-price">$96,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
           </ul>
         </article>
 
@@ -112,9 +163,39 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">Serrano & Balsámico</span><span class="item-meta">tomate, mozzarella, serrano, reducción balsámica</span><span class="item-price">$9,50</span></li>
-            <li><span class="item-name">Ibérica Clásica</span><span class="item-meta">tomate, mozzarella, jamón y chorizo ibérico</span><span class="item-price">$7,00</span></li>
-            <li><span class="item-name">Margherita Napoletana</span><span class="item-meta">tomate, mozzarella fresca, albahaca</span><span class="item-price">$6,50</span></li>
+            <li data-name="Pizza Serrano & Balsámico" data-price="9.50">
+              <div><span class="item-name">Serrano & Balsámico</span><span class="item-meta">tomate, mozzarella, serrano, reducción balsámica</span></div>
+              <div class="price-controls">
+                <span class="item-price">$9,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Pizza Ibérica Clásica" data-price="7.00">
+              <div><span class="item-name">Ibérica Clásica</span><span class="item-meta">tomate, mozzarella, jamón y chorizo ibérico</span></div>
+              <div class="price-controls">
+                <span class="item-price">$7,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Pizza Margherita Napoletana" data-price="6.50">
+              <div><span class="item-name">Margherita Napoletana</span><span class="item-meta">tomate, mozzarella fresca, albahaca</span></div>
+              <div class="price-controls">
+                <span class="item-price">$6,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
           </ul>
         </article>
 
@@ -129,9 +210,39 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">Tagliatelle al Pesto & Filetto</span><span class="item-meta">pesto genovese, res al vino tinto</span><span class="item-price">$9,95</span></li>
-            <li><span class="item-name">Tagliatelle alla Carbonara</span><span class="item-meta">guanciale, yema, parmesano (sin nata)</span><span class="item-price">$9,00</span></li>
-            <li><span class="item-name">Tagliatelle al Pomodoro</span><span class="item-meta">pomodoro artesanal, albóndigas</span><span class="item-price">$8,00</span></li>
+            <li data-name="Tagliatelle al Pesto & Filetto" data-price="9.95">
+              <div><span class="item-name">Tagliatelle al Pesto & Filetto</span><span class="item-meta">pesto genovese, res al vino tinto</span></div>
+              <div class="price-controls">
+                <span class="item-price">$9,95</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tagliatelle alla Carbonara" data-price="9.00">
+              <div><span class="item-name">Tagliatelle alla Carbonara</span><span class="item-meta">guanciale, yema, parmesano (sin nata)</span></div>
+              <div class="price-controls">
+                <span class="item-price">$9,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tagliatelle al Pomodoro" data-price="8.00">
+              <div><span class="item-name">Tagliatelle al Pomodoro</span><span class="item-meta">pomodoro artesanal, albóndigas</span></div>
+              <div class="price-controls">
+                <span class="item-price">$8,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
           </ul>
         </article>
 
@@ -146,10 +257,50 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">El Mediterráneo</span><span class="item-meta">pesto, mozzarella, jamón, chorizo</span><span class="item-price"><small>Desde</small> $5,90</span></li>
-            <li><span class="item-name">Tostada Española</span><span class="item-meta">serrano, stracciatella, masa madre</span><span class="item-price"><small>Desde</small> $7,00</span></li>
-            <li><span class="item-name">Sfumato</span><span class="item-meta">pollo ahumado, cebolla caramelizada</span><span class="item-price"><small>Desde</small> $7,00</span></li>
-            <li><span class="item-name">Roast Beef</span><span class="item-meta">roast beef, cheddar, mostaza alemana</span><span class="item-price"><small>Desde</small> $7,00</span></li>
+            <li data-name="Sandwich El Mediterráneo" data-price="5.90">
+              <div><span class="item-name">El Mediterráneo</span><span class="item-meta">pesto, mozzarella, jamón, chorizo</span></div>
+              <div class="price-controls">
+                <span class="item-price"><small>Desde</small> $5,90</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tostada Española" data-price="7.00">
+              <div><span class="item-name">Tostada Española</span><span class="item-meta">serrano, stracciatella, masa madre</span></div>
+              <div class="price-controls">
+                <span class="item-price"><small>Desde</small> $7,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Sandwich Sfumato" data-price="7.00">
+              <div><span class="item-name">Sfumato</span><span class="item-meta">pollo ahumado, cebolla caramelizada</span></div>
+              <div class="price-controls">
+                <span class="item-price"><small>Desde</small> $7,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Sandwich Roast Beef" data-price="7.00">
+              <div><span class="item-name">Roast Beef</span><span class="item-meta">roast beef, cheddar, mostaza alemana</span></div>
+              <div class="price-controls">
+                <span class="item-price"><small>Desde</small> $7,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
           </ul>
         </article>
 
@@ -164,10 +315,50 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">Gin Tonic CurArte</span><span class="item-price">$7,00</span></li>
-            <li><span class="item-name">Aperol Spritz</span><span class="item-price">$7,50</span></li>
-            <li><span class="item-name">Tinto de Verano</span><span class="item-price">$5,50</span></li>
-            <li><span class="item-name">Sangría de la Casa</span><span class="item-price">$6,00</span></li>
+            <li data-name="Gin Tonic CurArte" data-price="7.00">
+              <div><span class="item-name">Gin Tonic CurArte</span></div>
+              <div class="price-controls">
+                <span class="item-price">$7,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Aperol Spritz" data-price="7.50">
+              <div><span class="item-name">Aperol Spritz</span></div>
+              <div class="price-controls">
+                <span class="item-price">$7,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Tinto de Verano" data-price="5.50">
+              <div><span class="item-name">Tinto de Verano</span></div>
+              <div class="price-controls">
+                <span class="item-price">$5,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Sangría de la Casa" data-price="6.00">
+              <div><span class="item-name">Sangría de la Casa</span></div>
+              <div class="price-controls">
+                <span class="item-price">$6,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
           </ul>
         </article>
 
@@ -181,12 +372,72 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">Cappuccino</span><span class="item-price">$3,00</span></li>
-            <li><span class="item-name">Mochaccino</span><span class="item-price">$3,25</span></li>
-            <li><span class="item-name">Curamorlatte</span><span class="item-price">$3,50</span></li>
-            <li><span class="item-name">Americano</span><span class="item-price">$2,50</span></li>
-            <li><span class="item-name">Affogato</span><span class="item-price">$4,00</span></li>
-            <li><span class="item-name">Infusiones / Té</span><span class="item-price">$2,50</span></li>
+            <li data-name="Cappuccino" data-price="3.00">
+              <div><span class="item-name">Cappuccino</span></div>
+              <div class="price-controls">
+                <span class="item-price">$3,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Mochaccino" data-price="3.25">
+              <div><span class="item-name">Mochaccino</span></div>
+              <div class="price-controls">
+                <span class="item-price">$3,25</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Curamorlatte" data-price="3.50">
+              <div><span class="item-name">Curamorlatte</span></div>
+              <div class="price-controls">
+                <span class="item-price">$3,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Americano" data-price="2.50">
+              <div><span class="item-name">Americano</span></div>
+              <div class="price-controls">
+                <span class="item-price">$2,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Affogato" data-price="4.00">
+              <div><span class="item-name">Affogato</span></div>
+              <div class="price-controls">
+                <span class="item-price">$4,00</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
+            <li data-name="Infusiones / Té" data-price="2.50">
+              <div><span class="item-name">Infusiones / Té</span></div>
+              <div class="price-controls">
+                <span class="item-price">$2,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
           </ul>
         </article>
 
@@ -194,8 +445,28 @@
             <h3 class="menu-card-title">🍮 Postres</h3>
             <p class="menu-card-subtitle">El arte también puede ser dulce.</p>
             <ul class="menu-list">
-              <li><span class="item-name">Cura de Verano</span><span class="item-meta">duraznos asados, serrano, stracciatella</span><span class="item-price">$7,00</span></li>
-              <li><span class="item-name">Postre del día</span><span class="item-meta">pregunta por la creación del día</span><span class="item-price">$3,00</span></li>
+              <li data-name="Postre Cura de Verano" data-price="7.00">
+                <div><span class="item-name">Cura de Verano</span><span class="item-meta">duraznos asados, serrano, stracciatella</span></div>
+                <div class="price-controls">
+                  <span class="item-price">$7,00</span>
+                  <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                  </div>
+                </div>
+              </li>
+              <li data-name="Postre del día" data-price="3.00">
+                <div><span class="item-name">Postre del día</span><span class="item-meta">pregunta por la creación del día</span></div>
+                <div class="price-controls">
+                  <span class="item-price">$3,00</span>
+                  <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                  </div>
+                </div>
+              </li>
             </ul>
           </article>
       </div>
@@ -304,7 +575,9 @@
         </p>
       </header>
       <div class="contacto-actions">
-        <a href="https://maps.google.com/?q=-4.008064,-79.212001" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+        <button id="btnReserva" class="btn-primary">Reservar por WhatsApp</button>
+        
+        <a href="https://maps.app.goo.gl/WoHJsoPS1w8z2GYk8" target="_blank" rel="noopener noreferrer" class="btn-ghost">
           Ver ubicación en el mapa
         </a>
       </div>
@@ -319,14 +592,7 @@
     </section>
   </main>
 
-  <div class="fab-container fab-cart-pos" id="fabCart">
-      <button class="fab-main fab-cart-style" id="fabCartTrigger">
-          <i class="fa-solid fa-calendar-check" style="font-size: 1.5rem;"></i>
-          <span id="cartBadge" class="fab-badge" style="display: none;">0</span>
-      </button>
-  </div>
-
-  <div class="fab-container fab-food-pos" id="fabFood">
+  <div class="fab-container" id="fabFood">
     <div class="fab-options">
       <button class="fab-item tab-btn" data-target="tablas">🧀 Tablas</button>
       <button class="fab-item tab-btn" data-target="pizzas">🍕 Pizzas</button>
@@ -348,11 +614,19 @@
       <a href="#experiencia" class="fab-item nav-fab-link">✨ Experiencia</a>
       <a href="#menu" class="fab-item nav-fab-link">🍴 Menú Completo</a>
       <a href="#vinos" class="fab-item nav-fab-link">🍷 Vinos</a>
-      </div>
+      <button class="fab-item nav-fab-link" id="fabBtnReserva">📅 Reservar</button>
+    </div>
     <button class="fab-main fab-nav-style" id="fabTriggerNav">
       <span class="fab-icon">☰</span>
       <span class="fab-close">✕</span>
     </button>
+  </div>
+  
+  <div class="fab-container fab-cart-pos" id="fabCartContainer">
+      <button class="fab-main fab-cart-style" id="fabTriggerCart">
+        <span class="fab-icon">🛍️</span>
+        <span class="cart-count" id="globalCartCount">0</span>
+      </button>
   </div>
 
   <div id="reservationModal" class="modal-overlay">
@@ -362,6 +636,18 @@
       <div class="modal-header">
         <h2>Reserva tu mesa</h2>
         <p class="modal-subtitle">Estás a un paso de vivir la experiencia CurArte</p>
+      </div>
+      
+      <div id="cartSummary" class="cart-summary-box">
+          <h3>Tu Pedido</h3>
+          <div id="cartItemsContainer" class="cart-items-list">
+              <p class="empty-cart-msg">Aún no has seleccionado productos.</p>
+          </div>
+          <div class="cart-total-row">
+              <span>Total Estimado:</span>
+              <span id="cartTotalValue">$0.00</span>
+          </div>
+          <button id="btnClearCart" class="btn-ghost-sm">Vaciar Carrito</button>
       </div>
 
       <div class="bank-info-box">
@@ -379,20 +665,8 @@
         </div>
 
         <div class="form-group">
-          <label>Tu Pedido:</label>
-          
-          <button type="button" class="btn-clear" id="btnClearCart">Vaciar carrito</button>
-          
-          <div id="cart-container" class="cart-summary">
-            <p style="text-align:center; color:#999; font-style:italic;">Tu carrito está vacío.</p>
-          </div>
-
-          <div class="cart-total-box">
-            <span>Total estimado:</span>
-            <span id="cartTotalDisplay">$0.00</span>
-          </div>
-          
-          <input type="hidden" id="cartData" required>
+          <label for="resNotes">Notas adicionales (alergias, ocasión especial, etc.):</label>
+          <textarea id="resNotes" placeholder="Ej: Somos alérgicos a las nueces..."></textarea>
         </div>
 
         <div class="form-group">
@@ -401,10 +675,10 @@
         </div>
 
         <div class="modal-warning">
-          <p>⚠️ <strong>Importante:</strong> Al dar clic en "Siguiente", se abrirá WhatsApp con el detalle de tu pedido y el total. <strong>Recuerda adjuntar la foto del comprobante de pago</strong>.</p>
+          <p>⚠️ <strong>Importante:</strong> Al dar clic en "Confirmar", se abrirá WhatsApp con el detalle de tu pedido. <strong>Recuerda adjuntar la foto del comprobante de pago</strong>.</p>
         </div>
 
-        <button type="submit" class="btn-primary btn-block">Siguiente →</button>
+        <button type="submit" class="btn-primary btn-block">Confirmar y Enviar →</button>
       </form>
     </div>
   </div>
