@@ -287,7 +287,7 @@ body {
 
 
 /* ========================================= */
-/* MENÚS FLOTANTES (FAB) - AHORA GLOBALES    */
+/* MENÚS FLOTANTES (FAB) - GLOBALES          */
 /* ========================================= */
 .fab-container {
   display: flex; flex-direction: column; align-items: flex-end; position: fixed; bottom: 2rem; right: 1.5rem; z-index: 1000;
@@ -310,7 +310,7 @@ body {
   background-color: #fff !important; color: var(--text-main) !important; border: 2px solid var(--accent-gold) !important;
 }
 
-/* Estilo Burbuja Carrito */
+/* Estilo Burbuja Carrito (Fondo oscuro) */
 .fab-cart-style {
     background-color: var(--text-main) !important; color: #fff; width: auto !important; padding: 0 1.2rem;
     border-radius: 50px !important; flex-direction: row !important; gap: 0.5rem;

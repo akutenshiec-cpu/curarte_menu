@@ -362,7 +362,6 @@ if (reservationModal) {
       const url = `https://wa.me/${phone}?text=${message}`;
       window.open(url, '_blank');
       
-      // Opcional: Limpiar carrito tras reserva exitosa? Por ahora lo mantenemos.
        reservationModal.style.display = "none";
     });
   }
