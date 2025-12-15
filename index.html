@@ -26,9 +26,6 @@
 
   <section class="hero" id="inicio">
     <div class="hero-photo-layer"></div>
-    <div class="hero-botanicals hero-botanicals--left"></div>
-    <div class="hero-botanicals hero-botanicals--right"></div>
-
     <div class="hero-card">
       <img src="logo.svg" alt="Logo CurArte" class="hero-logo" />
 
@@ -114,7 +111,7 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">Serrano &amp; Balsámico</span><span class="item-meta">tomate, mozzarella, serrano, reducción balsámica</span><span class="item-price">$9,50</span></li>
+            <li><span class="item-name">Serrano & Balsámico</span><span class="item-meta">tomate, mozzarella, serrano, reducción balsámica</span><span class="item-price">$9,50</span></li>
             <li><span class="item-name">Ibérica Clásica</span><span class="item-meta">tomate, mozzarella, jamón y chorizo ibérico</span><span class="item-price">$7,00</span></li>
             <li><span class="item-name">Margherita Napoletana</span><span class="item-meta">tomate, mozzarella fresca, albahaca</span><span class="item-price">$6,50</span></li>
           </ul>
@@ -131,7 +128,7 @@
             </div>
           </details>
           <ul class="menu-list">
-            <li><span class="item-name">Tagliatelle al Pesto &amp; Filetto</span><span class="item-meta">pesto genovese, res al vino tinto</span><span class="item-price">$9,95</span></li>
+            <li><span class="item-name">Tagliatelle al Pesto & Filetto</span><span class="item-meta">pesto genovese, res al vino tinto</span><span class="item-price">$9,95</span></li>
             <li><span class="item-name">Tagliatelle alla Carbonara</span><span class="item-meta">guanciale, yema, parmesano (sin nata)</span><span class="item-price">$9,00</span></li>
             <li><span class="item-name">Tagliatelle al Pomodoro</span><span class="item-meta">pomodoro artesanal, albóndigas</span><span class="item-price">$8,00</span></li>
           </ul>
@@ -355,7 +352,7 @@
 
   <div id="reservationModal" class="modal-overlay">
     <div class="modal-content">
-      <span class="close-modal">&times;</span>
+      <span class="close-modal">×</span>
       
       <div class="modal-header">
         <h2>Reserva tu mesa</h2>
@@ -377,8 +374,20 @@
         </div>
 
         <div class="form-group">
-          <label for="resOrder">¿Qué deseas ordenar?</label>
-          <textarea id="resOrder" placeholder="Ej: Una tabla Dúo Perfecto y dos vinos tintos..." required></textarea>
+          <label>Tu Pedido:</label>
+          
+          <button type="button" class="btn-clear" id="btnClearCart">Vaciar carrito</button>
+          
+          <div id="cart-container" class="cart-summary">
+            <p style="text-align:center; color:#999; font-style:italic;">Tu carrito está vacío.</p>
+          </div>
+
+          <div class="cart-total-box">
+            <span>Total estimado:</span>
+            <span id="cartTotalDisplay">$0.00</span>
+          </div>
+          
+          <input type="hidden" id="cartData" required>
         </div>
 
         <div class="form-group">
@@ -387,10 +396,10 @@
         </div>
 
         <div class="modal-warning">
-          <p>⚠️ <strong>Importante:</strong> Al dar clic en "Siguiente", se abrirá WhatsApp. <strong>Recuerda adjuntar la foto del comprobante de pago</strong> para confirmar tu reserva.</p>
+          <p>⚠️ <strong>Importante:</strong> Al dar clic en "Siguiente", se abrirá WhatsApp con el detalle de tu pedido y el total. <strong>Recuerda adjuntar la foto del comprobante de pago</strong>.</p>
         </div>
 
-        <button type="submit" class="btn-primary btn-block">Siguiente &rarr;</button>
+        <button type="submit" class="btn-primary btn-block">Siguiente →</button>
       </form>
     </div>
   </div>
