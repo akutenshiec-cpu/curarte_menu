@@ -3,24 +3,85 @@
 // ==========================================
 
 // Estado Global del Carrito
-let cart = {}; // { "NombreItem": { price: 10.00, qty: 2 } }
+let cart = {}; 
+
+// BASE DE DATOS DE MARIDAJE (La "IA" simulada)
+const pairingsDatabase = [
+  {
+    keywords: ["Pizza", "Serrano", "Margherita", "Ibérica"],
+    text: "La acidez del tomate y la grasa del queso fundido requieren un vino que limpie el paladar. La estructura tánica media y las notas frutales de este vino crean el puente perfecto.",
+    recommendation: "Sugerencia: Viña Albali Tinto"
+  },
+  {
+    keywords: ["Tabla", "Quesos", "Embutidos", "Solo para mí", "Dúo"],
+    text: "Para una variedad de texturas curadas y lácteas, analizamos que se necesita versatilidad. Un vino con cuerpo medio y notas especiadas elevará tanto el queso suave como el jamón intenso.",
+    recommendation: "Sugerencia: Viña Albali Reserva"
+  },
+  {
+    keywords: ["Pasta", "Tagliatelle", "Carbonara", "Pesto", "Pomodoro"],
+    text: "La cremosidad de la salsa y la textura de la pasta artesanal piden un acompañante elegante. Detectamos afinidad con notas de frutos rojos maduros y un final sedoso.",
+    recommendation: "Sugerencia: Circus Malbec"
+  },
+  {
+    keywords: ["Sandwich", "Pernil", "Roast", "Sfumato"],
+    text: "Analizando perfiles ahumados y cárnicos: Se recomienda un tinto con carácter que no sea opacado por la intensidad del relleno, pero que respete la crujencia del pan.",
+    recommendation: "Sugerencia: Pascual Toso Estate"
+  },
+  {
+    keywords: ["Postre", "Dulce", "Cura de Verano"],
+    text: "Para el final dulce, la IA sugiere contraste o armonía. Un tinto suave puede resaltar el chocolate, o un café de especialidad para equilibrar el azúcar con amargor noble.",
+    recommendation: "Sugerencia: Café Americano o Peñasol Semidulce"
+  },
+  {
+    keywords: ["Gin", "Aperol", "Cóctel"],
+    text: "Estás en modo celebración. Si buscas cambiar de ritmo después del cóctel, sugerimos pasar a una copa ligera y afrutada que mantenga la frescura en el paladar.",
+    recommendation: "Sugerencia: Peñasol Tinto (Copa)"
+  }
+];
+
+// Función para invocar a la IA
+function triggerAIAnalysis(itemName) {
+  const aiText = document.getElementById('ai-text');
+  const aiRec = document.getElementById('ai-recommendation');
+  const aiSub = document.getElementById('ai-subtitle');
+  
+  if (!aiText || !aiRec) return;
+
+  // Buscar coincidencia
+  const match = pairingsDatabase.find(group => 
+    group.keywords.some(keyword => itemName.includes(keyword))
+  );
+
+  if (match) {
+    // Efecto visual de "pensando" (fade out/in rápido)
+    aiText.style.opacity = 0;
+    aiRec.style.opacity = 0;
+    
+    setTimeout(() => {
+      aiSub.textContent = `Analizando: ${itemName}...`;
+      aiText.innerHTML = match.text; // Usar innerHTML por si hay negritas
+      aiRec.textContent = match.recommendation;
+      
+      aiText.style.opacity = 1;
+      aiRec.style.opacity = 1;
+    }, 300);
+  }
+}
 
 // Cargar estado guardado al iniciar
 function loadState() {
-  // 1. Cargar Carrito
   const savedCart = localStorage.getItem('curarteCart');
   if (savedCart) {
     cart = JSON.parse(savedCart);
     updateUI();
   }
 
-  // 2. Cargar Datos del Formulario
   const savedForm = localStorage.getItem('curarteForm');
   if (savedForm) {
     const formData = JSON.parse(savedForm);
     const nameInput = document.getElementById('resName');
     const notesInput = document.getElementById('resNotes');
-    const dateInput = document.getElementById('resDate'); // Nuevo campo fecha
+    const dateInput = document.getElementById('resDate');
     
     if (nameInput) nameInput.value = formData.name || '';
     if (notesInput) notesInput.value = formData.notes || '';
@@ -37,30 +98,37 @@ function saveCart() {
 function saveForm() {
   const name = document.getElementById('resName')?.value || '';
   const notes = document.getElementById('resNotes')?.value || '';
-  const date = document.getElementById('resDate')?.value || ''; // Capturar fecha
+  const date = document.getElementById('resDate')?.value || '';
   localStorage.setItem('curarteForm', JSON.stringify({ name, notes, date }));
 }
 
 // Inicializar Listeners del Menú (Botones + y -)
 function setupCartListeners() {
-  const menuItems = document.querySelectorAll('.menu-list li');
+  // CAMBIO: Ahora seleccionamos items del menú Y opciones de vino
+  const buyableItems = document.querySelectorAll('.menu-list li, .wine-option-row');
   
-  menuItems.forEach(item => {
+  buyableItems.forEach(item => {
     const name = item.getAttribute('data-name');
     const price = parseFloat(item.getAttribute('data-price'));
     const minusBtn = item.querySelector('.minus');
     const plusBtn = item.querySelector('.plus');
     
     if (minusBtn && plusBtn) {
-      minusBtn.addEventListener('click', () => updateItemQty(name, price, -1));
-      plusBtn.addEventListener('click', () => updateItemQty(name, price, 1));
+      // Clonar para evitar listeners duplicados si se reinicia
+      const newMinus = minusBtn.cloneNode(true);
+      const newPlus = plusBtn.cloneNode(true);
+      
+      minusBtn.parentNode.replaceChild(newMinus, minusBtn);
+      plusBtn.parentNode.replaceChild(newPlus, plusBtn);
+
+      newMinus.addEventListener('click', () => updateItemQty(name, price, -1));
+      newPlus.addEventListener('click', () => updateItemQty(name, price, 1));
     }
   });
 
-  // Listeners para inputs del formulario (guardado automático)
   document.getElementById('resName')?.addEventListener('input', saveForm);
   document.getElementById('resNotes')?.addEventListener('input', saveForm);
-  document.getElementById('resDate')?.addEventListener('input', saveForm); // Listener fecha
+  document.getElementById('resDate')?.addEventListener('input', saveForm);
 }
 
 // Actualizar Cantidad
@@ -74,16 +142,22 @@ function updateItemQty(name, price, change) {
   if (cart[name].qty <= 0) {
     delete cart[name];
   }
+
+  // --- TRIGGER IA ---
+  // Si estamos AÑADIENDO un producto (+1), disparar la recomendación
+  if (change > 0) {
+    triggerAIAnalysis(name);
+  }
   
-  saveCart(); // Guardar cambios
+  saveCart(); 
   updateUI();
 }
 
-// Actualizar toda la interfaz (Contadores Menú, Burbuja y Modal)
+// Actualizar toda la interfaz
 function updateUI() {
-  // 1. Actualizar contadores en la lista del menú
-  const menuItems = document.querySelectorAll('.menu-list li');
-  menuItems.forEach(item => {
+  // 1. Actualizar contadores en la lista del menú y vinos
+  const buyableItems = document.querySelectorAll('.menu-list li, .wine-option-row');
+  buyableItems.forEach(item => {
     const name = item.getAttribute('data-name');
     const qtyDisplay = item.querySelector('.qty-val');
     if (qtyDisplay) {
@@ -113,7 +187,6 @@ function renderCartInModal() {
   const itemNames = Object.keys(cart);
   
   if (itemNames.length === 0) {
-    // ESTADO VACÍO CON BOTÓN
     container.innerHTML = `
         <div class="empty-state-container">
             <p class="empty-cart-msg">Aún no has seleccionado productos.</p>
@@ -121,18 +194,19 @@ function renderCartInModal() {
         </div>
     `;
     
-    // Listener para cerrar modal y navegar al menú
-    document.getElementById('btnGoToMenu').addEventListener('click', (e) => {
-        e.preventDefault();
-        const modal = document.getElementById("reservationModal");
-        if(modal) modal.style.display = "none";
-        
-        const menuSec = document.getElementById('menu');
-        if(menuSec) {
-            const y = menuSec.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({ top: y, behavior: "smooth" });
-        }
-    });
+    const btnGo = document.getElementById('btnGoToMenu');
+    if(btnGo) {
+        btnGo.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modal = document.getElementById("reservationModal");
+            if(modal) modal.style.display = "none";
+            const menuSec = document.getElementById('menu');
+            if(menuSec) {
+                const y = menuSec.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top: y, behavior: "smooth" });
+            }
+        });
+    }
 
   } else {
     itemNames.forEach(name => {
@@ -144,13 +218,19 @@ function renderCartInModal() {
       row.className = 'cart-item-row';
       row.innerHTML = `
         <div class="cart-item-controls">
-           <button onclick="updateItemQty('${name}', ${item.price}, -1)">-</button>
+           <button class="modal-minus">-</button>
            <span>${item.qty}</span>
-           <button onclick="updateItemQty('${name}', ${item.price}, 1)">+</button>
+           <button class="modal-plus">+</button>
         </div>
         <div style="padding-left:10px;">${name}</div>
         <div style="font-weight:bold;">$${subtotal.toFixed(2)}</div>
       `;
+      
+      // Listeners directos para el modal
+      // Usar closures para asegurar que el nombre/precio es correcto
+      row.querySelector('.modal-minus').onclick = () => updateItemQty(name, item.price, -1);
+      row.querySelector('.modal-plus').onclick = () => updateItemQty(name, item.price, 1);
+      
       container.appendChild(row);
     });
   }
@@ -158,7 +238,6 @@ function renderCartInModal() {
   totalVal.textContent = `$${totalPrice.toFixed(2)}`;
 }
 
-// Botón Vaciar Carrito
 document.getElementById('btnClearCart')?.addEventListener('click', (e) => {
   e.preventDefault();
   cart = {};
@@ -166,7 +245,6 @@ document.getElementById('btnClearCart')?.addEventListener('click', (e) => {
   updateUI();
 });
 
-// NUEVO: LÓGICA SELECTOR DE PAGO
 function setupPaymentSelector() {
   const selector = document.getElementById('paymentMethodSelector');
   const infoLoja = document.getElementById('infoLoja');
@@ -175,33 +253,24 @@ function setupPaymentSelector() {
   if (selector && infoLoja && infoDeuna) {
     selector.addEventListener('change', (e) => {
       const val = e.target.value;
-      
-      // Ocultar ambos primero
       infoLoja.classList.add('hidden');
       infoDeuna.classList.add('hidden');
-
-      // Mostrar según selección
-      if (val === 'loja') {
-        infoLoja.classList.remove('hidden');
-      } else if (val === 'deuna') {
-        infoDeuna.classList.remove('hidden');
-      }
+      if (val === 'loja') infoLoja.classList.remove('hidden');
+      else if (val === 'deuna') infoDeuna.classList.remove('hidden');
     });
   }
 }
 
-// Inicializar al cargar
 document.addEventListener('DOMContentLoaded', () => {
   setupCartListeners();
-  setupPaymentSelector(); // Activar selector de pago
-  loadState(); // Restaurar datos
+  setupPaymentSelector();
+  loadState();
 });
 
 
 // ==========================================
 // 2. GESTIÓN DE MENÚS FLOTANTES (FAB)
 // ==========================================
-
 function setupFab(triggerId, containerId) {
   const trigger = document.getElementById(triggerId);
   const container = document.getElementById(containerId);
@@ -209,12 +278,10 @@ function setupFab(triggerId, containerId) {
   if (trigger && container) {
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      // Cerrar otros menús activos
       document.querySelectorAll('.fab-container').forEach(fab => {
         if (fab !== container && fab.id !== 'fabCartContainer') { 
            fab.classList.remove('active');
         }
-        // Si clickeo el mismo, toggle
         if (fab === container) fab.classList.toggle('active');
         else fab.classList.remove('active');
       });
@@ -272,7 +339,6 @@ allNavButtons.forEach(btn => {
 
     // Activar clase visual
     allNavButtons.forEach(t => t.classList.remove('active'));
-    // Ojo: hay duplicados (en tabs y en FAB), activar ambos si coinciden data-target
     const targetId = btn.getAttribute('data-target');
     document.querySelectorAll(`.tab-btn[data-target="${targetId}"]`).forEach(b => b.classList.add('active'));
     
@@ -342,7 +408,8 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 
-document.querySelectorAll(".hero-card, .menu-card, .vino-card, .section-header, .experience-content, .wine-guide-card").forEach((el) => {
+// CAMBIO: Añadido .ai-pairing-container al selector para que se anime
+document.querySelectorAll(".hero-card, .menu-card, .vino-card, .section-header, .experience-content, .wine-guide-card, .ai-pairing-container").forEach((el) => {
   if (!el.classList.contains("hero-card")) {
       el.classList.add("reveal");
   }

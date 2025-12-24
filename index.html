@@ -257,6 +257,23 @@
             </div>
           </details>
           <ul class="menu-list">
+            <li data-name="Sandwich Pernil & Pistacho" data-price="8.50">
+              <div>
+                <span class="item-name">Pernil & Pistacho <span class="badge-new">NUEVO</span></span>
+                <span class="item-meta">Chabatta dorada, pernil jugoso en salsa BBQ, alioli de pistacho y cebolla encurtida.</span>
+                <p class="item-special-desc">
+                  Es un sándwich de temporada, sencillo pero bien pensado. De esos que se disfrutan con calma... y que dan ganas de volver a pedir.
+                </p>
+              </div>
+              <div class="price-controls">
+                <span class="item-price"><small>Desde</small> $8,50</span>
+                <div class="qty-selector">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-val">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            </li>
             <li data-name="Sandwich El Mediterráneo" data-price="5.90">
               <div><span class="item-name">El Mediterráneo</span><span class="item-meta">pesto, mozzarella, jamón, chorizo</span></div>
               <div class="price-controls">
@@ -510,6 +527,25 @@
         </div>
       </div>
 
+      <div class="ai-pairing-container reveal">
+        <div class="ai-card">
+          <div class="ai-header">
+            <i class="fa-solid fa-wand-magic-sparkles ai-icon"></i>
+            <h3>CurArte IA</h3>
+          </div>
+          <p class="ai-subtitle" id="ai-subtitle">Análisis en tiempo real</p>
+          
+          <p class="ai-text" id="ai-text">
+            Nuestra inteligencia de sabores sugiere comenzar con la novedad: el <strong>Sándwich Pernil & Pistacho</strong>. 
+            Su perfil ahumado y graso encuentra un contraste vibrante con la acidez equilibrada de un tinto joven.
+          </p>
+          
+          <div class="ai-badge">
+            <span id="ai-recommendation">Sugerencia: Circus Malbec</span>
+          </div>
+        </div>
+      </div>
+
       <div class="mobile-scroll-hint" style="margin-top:2rem;">Desliza <span class="arrow">→</span></div>
 
       <div class="vinos-grid">
@@ -518,42 +554,155 @@
           <h3 class="vino-name">Peñasol Tinto</h3>
           <p class="vino-meta">España · Semidulce</p>
           <p class="vino-notas">Frutal y ligeramente dulce, ideal para quienes buscan un vino amable.</p>
-          <p class="vino-precio">Botella $15,00 · Copa $3,50</p>
+          
+          <div class="wine-options-container">
+            <div class="wine-option-row" data-name="Copa Peñasol Tinto" data-price="3.50">
+                <span class="wine-opt-label">Copa ($3,50)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+            <div class="wine-option-row" data-name="Botella Peñasol Tinto" data-price="15.00">
+                <span class="wine-opt-label">Botella ($15,00)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+          </div>
         </article>
+
         <article class="vino-card">
           <div class="vino-intensidad intensidad-media"></div>
           <h3 class="vino-name">Viña Albali Tinto</h3>
           <p class="vino-meta">España · Valdepeñas</p>
           <p class="vino-notas">Aromas de vainilla y fruta madura. Cuerpo equilibrado.</p>
-          <p class="vino-precio">Botella $18,00 · Copa $4,50</p>
+          
+          <div class="wine-options-container">
+            <div class="wine-option-row" data-name="Copa Albali Tinto" data-price="4.50">
+                <span class="wine-opt-label">Copa ($4,50)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+            <div class="wine-option-row" data-name="Botella Albali Tinto" data-price="18.00">
+                <span class="wine-opt-label">Botella ($18,00)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+          </div>
         </article>
+
         <article class="vino-card">
           <div class="vino-intensidad intensidad-alta"></div>
           <h3 class="vino-name">Viña Albali Reserva</h3>
           <p class="vino-meta">España · Reserva</p>
           <p class="vino-notas">Frutos rojos, notas especiadas y redondez. Clásico y versátil.</p>
-          <p class="vino-precio">Botella $24,00 · Copa $5,50</p>
+          
+          <div class="wine-options-container">
+            <div class="wine-option-row" data-name="Copa Albali Reserva" data-price="5.50">
+                <span class="wine-opt-label">Copa ($5,50)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+            <div class="wine-option-row" data-name="Botella Albali Reserva" data-price="24.00">
+                <span class="wine-opt-label">Botella ($24,00)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+          </div>
         </article>
+
         <article class="vino-card">
           <div class="vino-intensidad intensidad-alta"></div>
           <h3 class="vino-name">Pascual Toso Estate</h3>
           <p class="vino-meta">Argentina · Malbec</p>
           <p class="vino-notas">Aromas de ciruela madura, mora y vainilla. Final largo con roble.</p>
-          <p class="vino-precio">Botella $24,00 · Copa $5,50</p>
+          
+          <div class="wine-options-container">
+            <div class="wine-option-row" data-name="Copa Pascual Toso" data-price="5.50">
+                <span class="wine-opt-label">Copa ($5,50)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+            <div class="wine-option-row" data-name="Botella Pascual Toso" data-price="24.00">
+                <span class="wine-opt-label">Botella ($24,00)</span>
+                <div class="qty-selector">
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-val">0</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+          </div>
         </article>
+
         <article class="vino-card">
             <div class="vino-intensidad intensidad-alta"></div>
             <h3 class="vino-name">Circus Malbec</h3>
             <p class="vino-meta">Argentina · Mendoza</p>
             <p class="vino-notas">Intensos aromas de ciruelas y violetas. Taninos sedosos.</p>
-            <p class="vino-precio">Botella $18,00 · Copa $4,50</p>
+            
+            <div class="wine-options-container">
+                <div class="wine-option-row" data-name="Copa Circus Malbec" data-price="4.50">
+                    <span class="wine-opt-label">Copa ($4,50)</span>
+                    <div class="qty-selector">
+                        <button class="qty-btn minus">-</button>
+                        <span class="qty-val">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+                <div class="wine-option-row" data-name="Botella Circus Malbec" data-price="18.00">
+                    <span class="wine-opt-label">Botella ($18,00)</span>
+                    <div class="qty-selector">
+                        <button class="qty-btn minus">-</button>
+                        <span class="qty-val">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+            </div>
         </article>
-         <article class="vino-card">
+
+        <article class="vino-card">
             <div class="vino-intensidad intensidad-media"></div>
             <h3 class="vino-name">Concha y Toro</h3>
             <p class="vino-meta">Chile · Reservado</p>
             <p class="vino-notas">Bayas maduras, taninos sedosos, toque de madera.</p>
-            <p class="vino-precio">Botella $18,00 · Copa $4,50</p>
+            
+            <div class="wine-options-container">
+                <div class="wine-option-row" data-name="Copa Concha y Toro" data-price="4.50">
+                    <span class="wine-opt-label">Copa ($4,50)</span>
+                    <div class="qty-selector">
+                        <button class="qty-btn minus">-</button>
+                        <span class="qty-val">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+                <div class="wine-option-row" data-name="Botella Concha y Toro" data-price="18.00">
+                    <span class="wine-opt-label">Botella ($18,00)</span>
+                    <div class="qty-selector">
+                        <button class="qty-btn minus">-</button>
+                        <span class="qty-val">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+            </div>
         </article>
       </div>
 

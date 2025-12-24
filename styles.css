@@ -455,3 +455,157 @@ body {
 
 .mobile-scroll-hint { display: none; }
 @media (max-width: 768px) { .mobile-scroll-hint { display: flex; } }
+
+/* ========================================= */
+/* ESTILOS NUEVOS: SÁNDWICH & IA             */
+/* ========================================= */
+
+/* Etiqueta de Producto Nuevo */
+.badge-new {
+  background: linear-gradient(135deg, var(--accent-red), #ff4b55);
+  color: white;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 5px rgba(237, 28, 36, 0.3);
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Descripción especial para el item de temporada */
+.item-special-desc {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-main); /* Un poco más oscuro que el meta */
+  font-style: italic;
+  line-height: 1.5;
+  border-left: 2px solid var(--accent-gold);
+  padding-left: 0.6rem;
+  opacity: 0.8;
+}
+
+/* --- SECCIÓN CURARTE IA --- */
+.ai-pairing-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.ai-card {
+  background: white; /* O un tono muy suave #fcfcfc */
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  position: relative;
+  /* Borde con gradiente estilo Gemini (Azul/Morado) pero sutil */
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(66, 133, 244, 0.15); /* Sombra azulada sutil */
+  overflow: hidden;
+}
+
+/* Borde superior decorativo degradado */
+.ai-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
+}
+
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+
+.ai-header h3 {
+  font-family: "Cinzel", serif;
+  margin: 0;
+  background: -webkit-linear-gradient(45deg, #4285F4, #D96570);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.4rem;
+}
+
+.ai-icon {
+  color: #9B72CB;
+  font-size: 1.2rem;
+}
+
+.ai-subtitle {
+  text-align: center;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-soft);
+  margin-bottom: 1.5rem;
+}
+
+.ai-text {
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+  margin-bottom: 1.5rem;
+}
+
+.ai-badge {
+  text-align: center;
+}
+
+.ai-badge span {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  background: rgba(66, 133, 244, 0.08);
+  color: #4285F4;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(66, 133, 244, 0.2);
+}
+
+/* Transición suave para el texto de IA */
+#ai-text, #ai-recommendation {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* ========================================= */
+/* ESTILOS ESPECÍFICOS PARA CARRITO DE VINOS */
+/* ========================================= */
+
+.wine-options-container {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 1rem;
+}
+
+.wine-option-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.wine-option-row:last-child {
+  margin-bottom: 0;
+}
+
+.wine-opt-label {
+  font-weight: 600;
+  color: var(--text-soft);
+}
